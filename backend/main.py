@@ -7,6 +7,14 @@ import firebase_admin
 from firebase_admin import credentials, auth
 from pydantic import BaseModel
 from typing import List
+from fastapi.middleware.cors import CORSMiddleware
+
+# Add CORS middleware to handle requests from the frontend
+origins = [
+    "http://localhost:3000",  # Frontend URL (adjust if you're running it on a different port)
+]
+
+
 
 # Load environment variables
 load_dotenv()
@@ -37,6 +45,14 @@ BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
 
 
 FIREBASE_WEB_API_KEY = os.getenv("FIREBASE_WEB_API_KEY")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allow frontend to access the backend
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 # Models
 class UserSignup(BaseModel):
@@ -160,6 +176,7 @@ def get_location_info(city: str):
         "latitude": location["lat"],
         "longitude": location["lng"]
     }
+    
 
 # YouTube API Integration
 YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search"
