@@ -1,0 +1,8 @@
+fastapi==0.95.0
+uvicorn==0.22.0
+requests==2.28.2
+python-dotenv==0.21.0
+google-cloud-firestore==2.10.0
+firebase-admin==5.2.0
+pydantic==1.10.2
+fastapi[all]==0.95.0  # Optional: Installs all extras for FastAPI (like CORS, etc.)
