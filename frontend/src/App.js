@@ -4,6 +4,7 @@ import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import ErrorMessage from './components/ErrorMessage';
 import './App.css';
+import Footer from "./components/footer";
 
 // Components for login/signup
 const LoginForm = ({ onLogin }) => {
@@ -164,6 +165,8 @@ const App = () => {
           <WeatherCard weatherData={weatherData} />
         </div>
       )}
+      {/* Footer Component */}
+      <Footer />
     </div>
   );
 };
